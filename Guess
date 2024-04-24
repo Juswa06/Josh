@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+  
+  srand(time(0));
+
+
+  int min = 1;
+  int max = 100;
+
+  
+  int secretNumber = rand() % (max - min + 1) + min;
+
+  int guess;
+  string name;
+
+  
+  cout << "What is your name, course and block? ";
+  getline(cin, name);
+  
+  do {
+    cout << "Hello " << name << ", guess a number between " << min << " and " << max << ": ";
+    cin >> guess;
+
+    
+    if (guess == secretNumber) {
+      cout << "Congratulations " << name << "! You guessed the number!" << endl;
+      break;
+    } else if (guess < secretNumber) {
+      cout << "Your guess is too low. Try again." << endl;
+      min = guess + 1; 
+    } else {
+      cout << "Your guess is too high. Try again." << endl;
+      max = guess - 1; 
+    }
+  } while (true);
+
+  return 0;
+}
